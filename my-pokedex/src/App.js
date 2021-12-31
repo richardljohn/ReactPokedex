@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import React, {useState } from 'react';
-import PokemonList from './components/PokemonList';
+import PokemonList from './Components/PokemonList';
 
 function App() {
   return (
-    null
+    <PokemonList pokemon={pokemon}/>
   );
 }
 
