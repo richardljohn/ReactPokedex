@@ -6,6 +6,9 @@ import axios from 'axios';
 function App() {
 
   const [pokemon, setPokemon] = useState([])
+  const [currPage, setCurrPage] = useState("https://pokeapi.co/api/v2/pokemon")
+  const [prevPage, setPrevPage] = useState("")
+  const [nextPage, setNextPage] = useState("")
 
   useEffect(() => {
     axios.get("https://pokeapi.co/api/v2/pokemon")
@@ -14,9 +17,9 @@ function App() {
         })
   }, [])
 
-    function getPokemon(){
+  function getPokemon(){
         
-    }
+  }
 
   return (
     <PokemonList pokemon={pokemon}/>
