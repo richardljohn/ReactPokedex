@@ -1,18 +1,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-function PokemonList() { 
-
-    const [pokemon, setPokemon] = useState([])
-
-    function getPokemon(){
-        axios.get("https://pokeapi.co/api/v2/pokemon/ditto").then(function(res){
-            setPokemon(res.data.results)
-        })
-    }
+function PokemonList({pokemon}) { 
 
     return (
-        <p>pokemon</p> 
+        <div>
+            {pokemon.map((p) => ( 
+                <div key={p}>{p}</div>
+            ))}
+        </div>
     )
 
 
