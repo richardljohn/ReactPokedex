@@ -6,7 +6,7 @@ function PokemonList({pokemon}) {
     return (
         <div>
             {pokemon.map((p) => ( 
-                <div key={p}>{p}</div>
+                <div key={p}>{p.charAt(0).toUpperCase() + p.slice(1)}</div>
             ))}
         </div>
     )
