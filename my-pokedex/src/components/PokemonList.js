@@ -15,8 +15,6 @@ function PokemonList({pokemon}) {
             ))}
         </div>
     )
-
-
 }
 
 export default PokemonList;
