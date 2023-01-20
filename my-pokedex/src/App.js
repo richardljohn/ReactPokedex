@@ -12,8 +12,11 @@ function App() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    setLoading(true)
     axios.get("https://pokeapi.co/api/v2/pokemon")
         .then((res) => {
+            setLoading(false)
+            setNextPage()
             setPokemon(res.data.results.map((p) => p.name))
         })
   }, [])
