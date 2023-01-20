@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Pagination from './Pagination';
-import Pokemon from './Pokemon';
+import Pokemon from './pokemon/Pokemon';
 
 function PokemonList() { 
 

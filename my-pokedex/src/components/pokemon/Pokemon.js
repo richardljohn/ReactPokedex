@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import "./pokemon.css"
 
 function Pokemon( {selectedPokemon} ){
     
@@ -17,7 +18,6 @@ function Pokemon( {selectedPokemon} ){
 
     useEffect(() => { 
         getPokemon(selectedPokemon)
-        console.log(selectedPokemon)
     }, []);
 
     if(!selectedPokemonData) { 
@@ -30,8 +30,10 @@ function Pokemon( {selectedPokemon} ){
 
     return (
         <div>
-            <p><img src={selectedPokemonData.sprites.front_default}/></p>
-            
+            <p>
+                <img class="pokemon-picture" src={selectedPokemonData.sprites.front_default}/>
+                <img class="pokemon-picture" src={selectedPokemonData.sprites.back_default}/>
+            </p>
         </div>
     )
 
