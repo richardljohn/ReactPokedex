@@ -7,10 +7,10 @@ import axios from 'axios';
 function App() {
 
   const [pokemon, setPokemon] = useState([])
-  const [selectedPokemon, setSelectedPokemon] = useState("")
+  const [selectedPokemon, setSelectedPokemon] = useState()
   const [currPage, setCurrPage] = useState("https://pokeapi.co/api/v2/pokemon")
-  const [prevPage, setPrevPage] = useState("")
-  const [nextPage, setNextPage] = useState("")
+  const [prevPage, setPrevPage] = useState()
+  const [nextPage, setNextPage] = useState()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -21,7 +21,9 @@ function App() {
     }).then((res) => {
             setLoading(false)
             setNextPage(res.data.next)
+            console.log(nextPage)
             setPrevPage(res.data.previous)
+            console.log(prevPage)
             setPokemon(res.data.results.map((p) => p.name))
     })
 
@@ -35,7 +37,7 @@ function App() {
   }
 
   function goToPrevPage() { 
-    setNextPage(prevPage)
+    setCurrPage(prevPage)
   }
 
 
@@ -48,7 +50,7 @@ function App() {
   return (
     <>
       <PokemonList pokemon={pokemon}/>
-      <Pagination goToNextPage={goToNextPage} goToPrevPage={goToPrevPage}/>
+      <Pagination goToNextPage={nextPage ? goToNextPage : null} goToPrevPage={prevPage ? goToPrevPage : null}/>
     </>
   );
 }
