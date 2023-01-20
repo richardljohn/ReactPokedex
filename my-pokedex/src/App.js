@@ -2,6 +2,7 @@ import './App.css';
 import React, {useState, useEffect} from 'react';
 import PokemonList from './components/PokemonList';
 import Pagination from './components/Pagination';
+import Pokemon from './components/Pokemon';
 import axios from 'axios';
 
 function App() {
@@ -21,9 +22,9 @@ function App() {
     }).then((res) => {
             setLoading(false)
             setNextPage(res.data.next)
-            console.log(nextPage)
+            //console.log(nextPage)
             setPrevPage(res.data.previous)
-            console.log(prevPage)
+            //console.log(prevPage)
             setPokemon(res.data.results.map((p) => p.name))
     })
 
@@ -39,10 +40,20 @@ function App() {
     setCurrPage(prevPage)
   }
 
-  if(loading) return "Loading...."
+  if(loading){
+    return "Loading...."
+  } 
 
-  function getPokemon(){
-        
+  function getPokemonByName(name){
+    setSelectedPokemon(name)       
+  }
+
+  if(selectedPokemon) { 
+    return ( 
+      <div>
+        <p><Pokemon selectedPokemon={selectedPokemon}/></p>
+      </div>
+    )
   }
 
   return (
