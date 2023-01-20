@@ -13,13 +13,25 @@ function App() {
 
   useEffect(() => {
     setLoading(true)
-    axios.get("https://pokeapi.co/api/v2/pokemon")
-        .then((res) => {
+    let cancel
+    axios.get(currPage, {
+      cancelToken: new axios.CancelToken(c => cancel = c)
+    }).then((res) => {
             setLoading(false)
-            setNextPage()
+            setNextPage(res.data.next)
+            setPrevPage(res.data.previous)
             setPokemon(res.data.results.map((p) => p.name))
-        })
-  }, [])
+    })
+
+    return () => cancel()
+
+      
+  }, [currPage])
+
+
+
+
+  if(loading) return "Loading...."
 
   function getPokemon(){
         
