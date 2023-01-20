@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import PokemonList from './components/PokemonList';
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
   // }
 
   return (
-    <div className="App">
+    <div class="App">
       <PokemonList />
     </div>
   );

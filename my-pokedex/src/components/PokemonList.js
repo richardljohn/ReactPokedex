@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Pagination from './Pagination';
+import Pokemon from './Pokemon';
 
 function PokemonList() { 
 
     const [pokemon, setPokemon] = useState([])
-    const [selectedPokemon, setSelctedPokemon] = useState()
+    const [selectedPokemon, setSelectedPokemon] = useState()
     const [currPage, setCurrPage] = useState("https://pokeapi.co/api/v2/pokemon")
     const [prevPage, setPrevPage] = useState()
     const [nextPage, setNextPage] = useState()
@@ -38,14 +39,31 @@ function PokemonList() {
     }
 
     function getPokemonByName(name){ 
-        setSelctedPokemon(name)
+        setSelectedPokemon(name)
+    }
+
+    if(loading) { 
+        return ( 
+            <div className="loading">
+                <h1>Loading...</h1>
+            </div>
+        )
+    }
+
+    if(selectedPokemon){ 
+        return (
+            <div>
+                <p><Pokemon selectedPokemon={selectedPokemon}/></p>
+                <button class="home-btn btn-primary" onClick={() => setSelectedPokemon(null)}>Go Back</button>
+            </div>
+        )
     }
 
     return (
         <>
             <div>
                 {pokemon.map((p) => ( 
-                    <p key={p}><button class="pokemon-btn btn-primary" onClick={() => getPokemonByName(p.name)}>{p.charAt(0).toUpperCase() + p.slice(1)}</button></p>
+                    <p key={p}><button class="pokemon-btn btn-primary" onClick={() => getPokemonByName(p)}>{p.charAt(0).toUpperCase() + p.slice(1)}</button></p>
                 ))}
             </div>
             <Pagination goToNextPage={nextPage ? goToNextPage : null} goToPrevPage={prevPage ? goToPrevPage : null}/>
