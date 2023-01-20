@@ -1,11 +1,13 @@
 import './App.css';
 import React, {useState, useEffect} from 'react';
 import PokemonList from './components/PokemonList';
+import Pagination from './components/Pagination';
 import axios from 'axios';
 
 function App() {
 
   const [pokemon, setPokemon] = useState([])
+  const [selectedPokemon, setSelectedPokemon] = useState("")
   const [currPage, setCurrPage] = useState("https://pokeapi.co/api/v2/pokemon")
   const [prevPage, setPrevPage] = useState("")
   const [nextPage, setNextPage] = useState("")
@@ -28,7 +30,13 @@ function App() {
       
   }, [currPage])
 
+  function goToNextPage(){ 
+    setCurrPage(nextPage)
+  }
 
+  function goToPrevPage() { 
+    setNextPage(prevPage)
+  }
 
 
   if(loading) return "Loading...."
@@ -38,7 +46,10 @@ function App() {
   }
 
   return (
-    <PokemonList pokemon={pokemon}/>
+    <>
+      <PokemonList pokemon={pokemon}/>
+      <Pagination goToNextPage={goToNextPage} goToPrevPage={goToPrevPage}/>
+    </>
   );
 }
 
