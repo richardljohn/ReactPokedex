@@ -28,7 +28,6 @@ function App() {
     })
 
     return () => cancel()
-
       
   }, [currPage])
 
@@ -39,7 +38,6 @@ function App() {
   function goToPrevPage() { 
     setCurrPage(prevPage)
   }
-
 
   if(loading) return "Loading...."
 
@@ -54,5 +52,4 @@ function App() {
     </>
   );
 }
-
 export default App;
