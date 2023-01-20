@@ -9,6 +9,7 @@ function App() {
   const [currPage, setCurrPage] = useState("https://pokeapi.co/api/v2/pokemon")
   const [prevPage, setPrevPage] = useState("")
   const [nextPage, setNextPage] = useState("")
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     axios.get("https://pokeapi.co/api/v2/pokemon")
