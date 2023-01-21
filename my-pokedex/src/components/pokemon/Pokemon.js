@@ -29,11 +29,14 @@ function Pokemon( {selectedPokemon} ){
     }
 
     return (
-        <div>
-            <p>
-                <img class="pokemon-picture" src={selectedPokemonData.sprites.front_default}/>
-                <img class="pokemon-picture" src={selectedPokemonData.sprites.back_default}/>
-            </p>
+        <div class="card" style="width: 18rem;">
+            <img class="pokemon-picture" src={selectedPokemonData.sprites.front_default}/>
+            <img class="pokemon-picture" src={selectedPokemonData.sprites.back_default}/>
+            <div class="card-body">
+                <p class="card-text">
+                    This is {selectedPokemonData.sprites.front_default}
+                </p>
+            </div>
         </div>
     )
 

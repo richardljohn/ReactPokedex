@@ -6,7 +6,6 @@ import Pokemon from '../pokemon/Pokemon';
 
 import "./pokemonList.css"
 
-
 function PokemonList() { 
 
     const [pokemon, setPokemon] = useState([])
