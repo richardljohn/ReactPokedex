@@ -1,7 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Pagination from './Pagination';
-import Pokemon from './pokemon/Pokemon';
+
+import Pagination from '../pagination/Pagination';
+import Pokemon from '../pokemon/Pokemon';
+
+import "./pokemonList.css"
+
 
 function PokemonList() { 
 
