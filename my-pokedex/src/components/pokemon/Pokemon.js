@@ -39,7 +39,6 @@ function Pokemon( {selectedPokemon} ){
             </div>
         </div>
     )
-
 }
 
 export default Pokemon;
